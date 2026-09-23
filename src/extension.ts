@@ -5,6 +5,11 @@ import * as vscode from 'vscode';
 let statusBarItem: vscode.StatusBarItem;
 let interval: NodeJS.Timeout;
 
+statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+statusBarItem.command = '32-bit-unsigned-integer-clock.hello'; // runs this when clicked
+
+
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -91,6 +96,20 @@ export function activate(context: vscode.ExtensionContext) {
 		is_stopWatch = false;
 		vscode.window.showInformationMessage(`Stoped at: ${binary}`)
 	});
+
+	const toggleStopwatch = vscode.commands.registerCommand('32-bit-unsigned-integer-clock.toggle-stopwatch', () => {
+		if (is_stopWatch) {
+			is_stopWatch = false;
+			vscode.window.showInformationMessage(`Stoped at: ${binary}`);
+		} else {
+			stopWatch_startDate.setTime(Date.now());
+			is_stopWatch = true;
+		}
+	});
+
+statusBarItem.command = '32-bit-unsigned-integer-clock.toggle-stopwatch';
+
+context.subscriptions.push(toggleStopwatch);
 
 	context.subscriptions.push(helloCommand, startStopwatch, endStopwatch);
 }

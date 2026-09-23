@@ -2,7 +2,7 @@
   "name": "32-bit-unsigned-integer-clock",
   "displayName": "32 Bit Unsigned Integer Clock",
   "description": "A 32 Bit Unsigned integer that ticks up once per second",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "icon": "logo.png",
   "publisher": "SuperNinjaCat5",
   "repository": {
@@ -32,6 +32,10 @@
       {
         "command": "32-bit-unsigned-integer-clock.stop-stopwatch",
         "title": "32 Bit Clock: Stop Stopwatch"
+      },
+      {
+        "command": "32-bit-unsigned-integer-clock.toggle-stopwatch",
+        "title": "32 Bit Clock: Toggle Stopwatch"
       }
     ]
     
