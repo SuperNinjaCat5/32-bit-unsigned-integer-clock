@@ -21,6 +21,28 @@ export function activate(context: vscode.ExtensionContext) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
+	const rainbowColors: string[] = [
+		"#ff0d0d", "#ff2b0d", "#ff480d", "#ff660d", "#ff830d",
+		"#ffa10d", "#ffbe0d", "#ffdc0d", "#fff90d", "#e3ff0d",
+		"#c6ff0d", "#a8ff0d", "#8bff0d", "#6dff0d", "#50ff0d",
+		"#32ff0d", "#15ff0d", "#0dff28", "#0dff45", "#0dff63",
+		"#0dff80", "#0dff9e", "#0dffbb", "#0dffd9", "#0dfff6",
+		"#0de3ff", "#0dc6ff", "#0da8ff", "#0d8bff", "#0d6dff",
+
+		"#8e0dffff",
+
+		"#0d6dff",
+		"#0d8bff", "#0da8ff", "#0dc6ff", "#0de3ff",
+		"#0dfff6", "#0dffd9", "#0dffbb", "#0dff9e", "#0dff80",
+		"#0dff63", "#0dff45", "#0dff28", "#15ff0d", "#32ff0d",
+		"#50ff0d", "#6dff0d", "#8bff0d", "#a8ff0d", "#c6ff0d",
+		"#e3ff0d", "#fff90d", "#ffdc0d", "#ffbe0d", "#ffa10d",
+		"#ff830d", "#ff660d", "#ff480d", "#ff2b0d"
+	];
+
+	
+	let i: number = 0;
+
 	function updateClock() {
 		let clock_num: number;
 
@@ -28,12 +50,17 @@ export function activate(context: vscode.ExtensionContext) {
 			const now = Math.floor(Date.now() / 1000);
 			const before = Math.floor(stopWatch_startDate.getTime() / 1000);
 			clock_num = now - before;
+			
+			statusBarItem.color = rainbowColors[i % rainbowColors.length]
 		} else {
 			clock_num = Math.floor(Date.now() / 1000);
+			statusBarItem.color = '#ffffff'
 		}
 
 		binary = (clock_num >>> 0).toString(2).padStart(32, '0');
 		statusBarItem.text = `$(watch) ${binary}`;
+
+		i++;
 	}
 
 	updateClock();

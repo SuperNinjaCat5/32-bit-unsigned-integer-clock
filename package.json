@@ -2,14 +2,22 @@
   "name": "32-bit-unsigned-integer-clock",
   "displayName": "32 Bit Unsigned Integer Clock",
   "description": "A 32 Bit Unsigned integer that ticks up once per second",
-  "version": "0.0.1",
+  "version": "1.0.1",
+  "icon": "logo.png",
+  "publisher": "SuperNinjaCat5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuperNinjaCat5/32-bit-unsigned-integer-clock"
+  },
   "engines": {
     "vscode": "^1.105.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -25,26 +33,7 @@
         "command": "32-bit-unsigned-integer-clock.stop-stopwatch",
         "title": "32 Bit Clock: Stop Stopwatch"
       }
-    ],
-     
-    "viewsContainers": {
-        "activitybar": [
-          {
-            "id": "clockContainer",
-            "title": "32-Bit Clock",
-            "icon": "resources/clock.svg"
-          }
-        ]
-      },
-      "views": {
-        "clockContainer": [
-          {
-            "type": "webview",
-            "id": "32bitClock.view",
-            "name": "Clock"
-          }
-        ]
-      }
+    ]
     
   },
   "scripts": {
